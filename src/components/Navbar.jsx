@@ -93,7 +93,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <ListItem
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-200"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -133,7 +133,7 @@ function NavList() {
         as="a"
         href="#"
         variant="small"
-        color="blue-gray"
+        color="white"
         className="font-medium"
       >
         <ListItem className="items-center gap-2 py-2 pr-4">Home</ListItem>
@@ -143,7 +143,7 @@ function NavList() {
         as="a"
         href="#"
         variant="small"
-        color="blue-gray"
+        color="white"
         className="font-medium"
       >
         <ListItem className="flex items-center gap-2 py-2 pr-4">
@@ -176,8 +176,8 @@ export function NavbarWithMegaMenu() {
   }, []);
  
   return (
-    <Navbar className="mx-auto max-w-none  px-4 py-2">
-      <div className="flex items-center justify-between text-blue-gray-900">
+    <Navbar className="mx-auto max-w-none  px-4 py-2 bg-green-800" /*style={{backgroundColor: '23, 120, 23'}}*/>
+      <div className="flex items-center justify-between text-gray-200">
         <Typography
           as="a"
           href="#"
