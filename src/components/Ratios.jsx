@@ -12,9 +12,11 @@ export const Ratios = () => {
       <div className="container mx-auto">
         <div className="w-full container mt-10 flex flex-wrap justify-center">
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
+          <Link to='/ratio/razoncorriente'>
             <p className="font-mono text-xl font-bold text-gray-200">
               Razon Corriente
             </p>
+            </Link>
           </button>
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
           <Link to='/ratio/pruebac'>
@@ -24,9 +26,11 @@ export const Ratios = () => {
           </Link>
           </button>
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
+          <Link to='/ratio/capitalnetooperativo'>
             <p className="font-mono text-xl font-bold text-gray-200">
               Capital de trabajo neto operativo
             </p>
+            </Link>
           </button>
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
           <Link to='/ratio/margenbruto'>
@@ -36,11 +40,12 @@ export const Ratios = () => {
             </Link>
           </button>
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
+          <Link to='/ratio/margenutilidadoperativa'>
             <p className="font-mono text-xl font-bold text-gray-200">
               Margen de utilidades operacionales
             </p>
+            </Link>
           </button>
-
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
           <Link to='/ratio/margenbrutoN'>
             <p className="font-mono text-xl font-bold text-gray-200">
