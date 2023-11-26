@@ -55,9 +55,11 @@ export const Ratios = () => {
           </button>
 
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600"> 
+          <Link to='/ratio/rentabilidadactivo'>
             <p className="font-mono text-xl font-bold text-gray-200">
               Rentabilidad del activo
             </p>
+            </Link>
           </button>
 
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
@@ -69,9 +71,11 @@ export const Ratios = () => {
           </button>
 
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">
+          <Link to='/ratio/rotacionactivos'>
             <p className="font-mono text-xl font-bold text-gray-200">
               Rotacion de activos
             </p>
+            </Link>
           </button>
 
           <button className="m-1 md:w-2/5 w-4/5 rounded-lg shadow-lg p-10 bg-indigo-900 hover:bg-indigo-600">

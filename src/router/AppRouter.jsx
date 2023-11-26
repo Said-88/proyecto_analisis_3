@@ -14,7 +14,8 @@ import  RotacInv  from "../components/Ratios/rotacioninven";
 import  RazonCorr  from "../components/Ratios/razoncorriente";
 import  CapitalNOperat from "../components/Ratios/capitalnetooperativo";
 import  MargenUtilidadOp from "../components/Ratios/margenutilidadoperativa";
-
+import  RentabilidadActivo from "../components/Ratios/rentabilidadactivo";
+import  RotacionActivo from "../components/Ratios/rotacionactivos";
 export const AppRouter = () => {
   return (
     <Routes>
@@ -88,6 +89,22 @@ export const AppRouter = () => {
         element={
           <ProtectedRoute>
             <MargenUtilidadOp />
+          </ProtectedRoute>
+        }
+        />
+         <Route
+        path="/ratio/rentabilidadactivo"
+        element={
+          <ProtectedRoute>
+            <RentabilidadActivo />
+          </ProtectedRoute>
+        }
+        />
+         <Route
+        path="/ratio/rotacionactivos"
+        element={
+          <ProtectedRoute>
+            <RotacionActivo />
           </ProtectedRoute>
         }
         />
