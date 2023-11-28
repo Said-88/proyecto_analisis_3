@@ -1,4 +1,6 @@
 import { Typography } from "@material-tailwind/react";
+import { useEffect, useState } from "react";
+import { getPatrimonios, getBalance } from "../../api/razon.api";
 
 const TABLE_ROWS = [
     {
@@ -39,40 +41,66 @@ const TABLE_ROWS = [
 ];
 
 export const PatrimonioNeto = () => {
+    const [patrimonios, setPatrimonios] = useState([]);
+    const [totals, setTotal] = useState([]);
+    const [inputValue, setInputValue] = useState("");
+
+    useEffect(() => {
+      async function loadEvents() {
+        const response = await getPatrimonios();
+        console.log(response.data);
+        setPatrimonios(response.data);
+      }
+      loadEvents();
+    }, []);
+
+    useEffect(() => {
+        async function loadEvents() {
+          const response = await getBalance();
+          console.log(response.data);
+          setTotal(response.data);
+        }
+        loadEvents();
+      }, []);
+    
+      const handleClick = (balance) => {
+        setInputValue(balance); // Establece el valor del input al hacer clic en el botón
+    }
+
   return (
     <>
  <div className="p-4 flex items-center justify-center h-full">
                 <table className="min-w-max table-auto text-left w-full rounded-lg shadow-md">
                     <tbody>
-                        {TABLE_ROWS.map(({ patrimonio, name, job, date, id }) => (
-                            <tr key={id} className="even:bg-blue-gray-50/50">
+                        {patrimonios.map(({ Tipo_Patrimonio, Monto,descripcion, ID_Patrimonio }) => (
+                            <tr key={ID_Patrimonio} className="even:bg-blue-gray-50/50">
                                 <td className="p-4">
                                     <Typography
                                         variant="small"
                                         color="blue-gray"
                                         className="font-normal leading-none opacity-70"
                                     >
-                                        {patrimonio}
+                                        {Tipo_Patrimonio}
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {name}
+                                        {descripcion}
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {job}
+                                        ${Monto}
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {date}
+                                  
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
-                                        Edit
+                                      
                                     </Typography>
                                 </td>
                             </tr>
@@ -83,7 +111,8 @@ export const PatrimonioNeto = () => {
             <div className="flex justify-center items-center">
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition-colors"
+                    className="bg-teal-900 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition-colors"
+                    onClick={() => handleClick(totals[0].Patrimonio_Neto)}
                 >
                     Calcular
                 </button>
@@ -93,6 +122,8 @@ export const PatrimonioNeto = () => {
                     name="name"
                     className="border border-gray-300 rounded p-2 m-9"
                     placeholder="Total Pasivos Corrientes"
+                    disabled={true}
+                    value={`$ ${inputValue}`}
                 />
             </div>
     </>

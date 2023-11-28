@@ -28,19 +28,19 @@ import { Link } from "react-router-dom";
 const navListMenuItems = [
   {
     title: "Balance General",
-    description: "X description",
+    description: "Muestra la situación económica y financiera de una empresa en un momento determinado.",
     icon: SquaresPlusIcon,
     link: "/balance",
   },
   {
     title: "About Us",
-    description: "X description",
+    description: "",
     icon: UserGroupIcon,
     link: "/about",
   },
   {
     title: "Razones Contables",
-    description: "X description",
+    description: "Se utilizan para evaluar el desempeño financiero y la solvencia de una empresa.",
     icon: Bars4Icon,
     link: "/ratio",
   },
@@ -93,7 +93,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="small" className="font-medium">
             <ListItem
-              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-900"
+              className="flex items-center gap-2 py-2 pr-4 font-medium text-gray-200"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -133,22 +133,22 @@ function NavList() {
         as="a"
         href="#"
         variant="small"
-        color="blue-gray"
+        color="white"
         className="font-medium"
       >
-        <ListItem className="items-center gap-2 py-2 pr-4">Home</ListItem>
+        {/* <ListItem className="items-center gap-2 py-2 pr-4">Home</ListItem> */}
       </Typography>
       <NavListMenu />
       <Typography
         as="a"
         href="#"
         variant="small"
-        color="blue-gray"
+        color="white"
         className="font-medium"
       >
-        <ListItem className="flex items-center gap-2 py-2 pr-4">
+        {/* <ListItem className="flex items-center gap-2 py-2 pr-4">
           Contact Us
-        </ListItem>
+        </ListItem> */}
       </Typography>
     </List>
   );
@@ -176,8 +176,9 @@ export function NavbarWithMegaMenu() {
   }, []);
  
   return (
-    <Navbar className="mx-auto max-w-none  px-4 py-2">
-      <div className="flex items-center justify-between text-blue-gray-900">
+    <Navbar className="mx-auto max-w-none fixed  px-4 py-2  bg-green-800">
+      <div className="flex items-center justify-between text-gray-200">
+        <Link to="/ratio">
         <Typography
           as="a"
           href="#"
@@ -186,6 +187,7 @@ export function NavbarWithMegaMenu() {
         >
           Estados Financieros
         </Typography>
+        </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>
@@ -199,7 +201,7 @@ export function NavbarWithMegaMenu() {
         </div>
         <IconButton
           variant="text"
-          color="blue-gray"
+          color="gray-200"
           className="lg:hidden"
           onClick={() => setOpenNav(!openNav)}
         >

@@ -1,4 +1,6 @@
 import { Typography } from "@material-tailwind/react";
+import { useEffect, useState } from "react";
+import { getPasivos, getBalance } from "../../api/razon.api";
 
 const TABLE_ROWS = [
     {
@@ -60,40 +62,67 @@ const TABLE_ROWS = [
 ];
 
 export const Pasivos = () => {
+    const [pasivos, setPasivos] = useState([]);
+    const [totals, setTotal] = useState([]);
+    const [inputValue, setInputValue] = useState("");
+
+    useEffect(() => {
+      async function loadEvents() {
+        const response = await getPasivos();
+        console.log(response.data);
+        setPasivos(response.data);
+      }
+      loadEvents();
+    }, []);
+
+    useEffect(() => {
+        async function loadEvents() {
+          const response = await getBalance();
+          console.log(response.data);
+          setTotal(response.data);
+        }
+        loadEvents();
+      }, []);
+
+    const handleClick = (totals) => {
+        console.log(totals);
+        setInputValue(totals);
+    }
+
   return (
     <>
       <div className="p-4 flex items-center justify-center h-full">
                 <table className="min-w-max table-auto text-left w-full rounded-lg shadow-md">
                     <tbody>
-                        {TABLE_ROWS.map(({ pasivo, name, job, date, id }) => (
-                            <tr key={id} className="even:bg-blue-gray-50/50">
+                        {pasivos.map(({ id_pasivo,tipo_pasivo,descripcion, monto }) => (
+                            <tr key={id_pasivo} className="even:bg-blue-gray-50/50">
                                 <td className="p-4">
                                     <Typography
                                         variant="small"
                                         color="blue-gray"
                                         className="font-normal leading-none opacity-70"
                                     >
-                                        {pasivo}
+                                        {tipo_pasivo}
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {name}
+                                        {descripcion}
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {job}
+                                        ${monto}
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography variant="small" color="blue-gray" className="font-normal">
-                                        {date}
+                                       
                                     </Typography>
                                 </td>
                                 <td className="p-4">
                                     <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
-                                        Edit
+                                       
                                     </Typography>
                                 </td>
                             </tr>
@@ -104,7 +133,8 @@ export const Pasivos = () => {
             <div className="flex justify-center items-center">
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition-colors"
+                    className="bg-teal-900 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition-colors"
+                    onClick={() => handleClick(totals[0].Total_Pasivos)}
                 >
                     Calcular
                 </button>
@@ -114,6 +144,8 @@ export const Pasivos = () => {
                     name="name"
                     className="border border-gray-300 rounded p-2 m-9"
                     placeholder="Total Pasivos Corrientes"
+                    disabled={true}
+                    value={`$ ${inputValue}`}
                 />
             </div>
     </>

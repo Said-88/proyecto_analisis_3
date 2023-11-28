@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { NavbarWithMegaMenu } from '../Navbar';
+import { SimpleFooter } from '../Footer';
+import { getRazones } from '../../api/razon.api';
 
 const MargenNetoUtilidad = () => {
   const [ingresos, setIngresos] = useState('');
@@ -7,6 +10,17 @@ const MargenNetoUtilidad = () => {
   const [margenNeto, setMargenNeto] = useState(null);
   const [error, setError] = useState('');
   const [comentario, setComentario] = useState('');
+  const [ratios, setRatios] = useState([]);
+
+  useEffect(() => {
+    const loadRatios = async () => {
+      const response = await getRazones();
+      console.log(response.data);
+      setRatios(response.data);
+    };
+    loadRatios();
+  }, []);
+  
 
   const handleIngresosChange = (e) => {
     setIngresos(e.target.value);
@@ -62,6 +76,8 @@ const MargenNetoUtilidad = () => {
   };
 
   return (
+    <>
+    <NavbarWithMegaMenu />
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-8 text-blue-600">Margen Neto de Utilidad</h1>
@@ -97,7 +113,7 @@ const MargenNetoUtilidad = () => {
                 placeholder="Ingrese el monto de gastos"
               />
             </label>
-            <div className="flex space-x-4">
+            <div className="flex items-center justify-center space-x-4">
               <button
                 type="submit"
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
@@ -129,6 +145,8 @@ const MargenNetoUtilidad = () => {
         </div>
       </div>
     </div>
+    <SimpleFooter />
+    </>
   );
 };
 

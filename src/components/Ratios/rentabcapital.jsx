@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { NavbarWithMegaMenu } from '../Navbar';
+import { SimpleFooter } from '../Footer';
 
 const RentabilidadCapital = () => {
   const [ingresos, setIngresos] = useState('');
@@ -70,10 +72,12 @@ const RentabilidadCapital = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <>
+      <NavbarWithMegaMenu />
+    <div className="flex justify-center items-center h-screen bg-gray-100 max-w-full ">
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-8 text-blue-600">Rentabilidad del Capital (ROE)</h1>
-        <div className="w-full max-w-md p-4 bg-white rounded-md shadow-md">
+        <div className="p-4 bg-white rounded-md shadow-md">
           <form onSubmit={handleSubmit}>
             <label className="block mb-2">
               Ingresos:
@@ -115,7 +119,7 @@ const RentabilidadCapital = () => {
                 placeholder="Ingrese el monto de patrimonio"
               />
             </label>
-            <div className="flex space-x-4">
+            <div className="flex items-center justify-center space-x-4">
               <button
                 type="submit"
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
@@ -125,7 +129,7 @@ const RentabilidadCapital = () => {
               <button
                 type="button"
                 onClick={handleReset}
-                className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400"
+                className="bg-gray-300 text-gray-700  px-4 py-2 rounded hover:bg-gray-400"
               >
                 Limpiar
               </button>
@@ -147,6 +151,8 @@ const RentabilidadCapital = () => {
         </div>
       </div>
     </div>
+    <SimpleFooter />
+    </>
   );
 };
 

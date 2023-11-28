@@ -2,86 +2,86 @@ import { useState } from 'react';
 import { NavbarWithMegaMenu } from '../Navbar';
 import { SimpleFooter } from '../Footer';
 
-const MargenBrutoUtilidad = () => {
-  const [ingresos, setIngresos] = useState('');
-  const [costos, setCostos] = useState('');
-  const [margenBruto, setMargenBruto] = useState(null);
+const RazonCorriente = () => {
+  const [activosCorrientes, setActivosCorrientes] = useState('');
+  const [pasivosCorrientes, setPasivosCorrientes] = useState('');
+  const [razonCorriente, setRazonCorriente] = useState(null);
   const [error, setError] = useState('');
   const [comentario, setComentario] = useState('');
 
-  const handleIngresosChange = (e) => {
-    setIngresos(e.target.value);
+  const handleActivosCorrientesChange = (e) => {
+    setActivosCorrientes(e.target.value);
   };
 
-  const handleCostosChange = (e) => {
-    setCostos(e.target.value);
+  const handlePasivosCorrientesChange = (e) => {
+    setPasivosCorrientes(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!ingresos.trim() || !costos.trim()) {
+    if (!activosCorrientes.trim() || !pasivosCorrientes.trim()) {
       setError('Por favor, completa todos los campos.');
       return;
     }
 
     setError('');
 
-    // Calcula el margen bruto de utilidad
-    const ingresosFloat = parseFloat(ingresos);
-    const costosFloat = parseFloat(costos);
+    // Calcular la razón corriente
+    const activosCorrientesFloat = parseFloat(activosCorrientes);
+    const pasivosCorrientesFloat = parseFloat(pasivosCorrientes);
 
-    if (costosFloat >= ingresosFloat) {
-      setError('Los costos no pueden ser iguales o mayores que los ingresos.');
-      setMargenBruto(null);
+    if (pasivosCorrientesFloat === 0) {
+      setError('Los pasivos corrientes no pueden ser cero.');
+      setRazonCorriente(null);
       return;
     }
 
-    const margenBrutoCalculado = ((ingresosFloat - costosFloat) / ingresosFloat) * 100;
-    setMargenBruto(margenBrutoCalculado.toFixed(2));
+    const razonCorrienteCalculada = activosCorrientesFloat / pasivosCorrientesFloat;
+    setRazonCorriente(razonCorrienteCalculada.toFixed(2));
 
     // Establecer comentario según el resultado
-    if (margenBrutoCalculado >= 50) {
-      setComentario('El margen bruto de utilidad es saludable. ¡Buen trabajo!');
+    if (razonCorrienteCalculada >= 1.5) {
+      setComentario('La razón corriente es buena. ¡Buen trabajo!');
     } else {
-      setComentario('El margen bruto de utilidad puede ser mejorado. Se recomienda revisar los costos.');
+      setComentario('La razón corriente es baja. Se recomienda analizar la liquidez.');
     }
   };
 
   const handleReset = () => {
-    setIngresos('');
-    setCostos('');
-    setMargenBruto(null);
+    setActivosCorrientes('');
+    setPasivosCorrientes('');
+    setRazonCorriente(null);
     setError('');
     setComentario('');
   };
 
   return (
     <>
-    <NavbarWithMegaMenu />
+        <NavbarWithMegaMenu />
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-8 text-blue-600">Margen Bruto de Utilidad</h1>
+        <h1 className="text-4xl font-bold mb-8 text-blue-600">Razón Corriente</h1>
         <div className="w-full max-w-md p-4 bg-white rounded-md shadow-md">
           <form onSubmit={handleSubmit}>
             <label className="block mb-2">
-              Ingresos:
+              Activos Corrientes:
               <input
                 type="text"
-                value={ingresos}
-                onChange={handleIngresosChange}
+                value={activosCorrientes}
+                onChange={handleActivosCorrientesChange}
                 className="w-full p-2 border border-gray-300 rounded"
-                placeholder="Ingrese el monto de ingresos"
+                placeholder="Ingrese el monto de activos corrientes"
               />
             </label>
             <label className="block mb-2">
-              Costos:
+              Pasivos Corrientes:
               <input
                 type="text"
-                value={costos}
-                onChange={handleCostosChange}
+                value={pasivosCorrientes}
+                onChange={handlePasivosCorrientesChange}
                 className="w-full p-2 border border-gray-300 rounded"
-                placeholder="Ingrese el monto de costos"
+                placeholder="Ingrese el monto de pasivos corrientes"
               />
             </label>
             <div className="flex items-center justify-center space-x-4">
@@ -100,10 +100,10 @@ const MargenBrutoUtilidad = () => {
               </button>
             </div>
 
-            {margenBruto !== null && (
+            {razonCorriente !== null && (
               <div className="mt-4">
                 <p>
-                  Margen Bruto de Utilidad: <strong>{margenBruto}%</strong>
+                  Razón Corriente: <strong>{razonCorriente}</strong>
                 </p>
                 <p className="mt-2">
                   Comentario: {comentario}
@@ -121,4 +121,4 @@ const MargenBrutoUtilidad = () => {
   );
 };
 
-export default MargenBrutoUtilidad;
+export default RazonCorriente;
