@@ -11,7 +11,11 @@ import  MargenBruto  from "../components/Ratios/margenbrutoutilidad";
 import  MargenBrutoN  from "../components/Ratios/margenbrutoneto"; 
 import  RentabCap  from "../components/Ratios/rentabcapital"; 
 import  RotacInv  from "../components/Ratios/rotacioninven"; 
-
+import  RazonCorr  from "../components/Ratios/razoncorriente";
+import  CapitalNOperat from "../components/Ratios/capitalnetooperativo";
+import  MargenUtilidadOp from "../components/Ratios/margenutilidadoperativa";
+import  RentabilidadActivo from "../components/Ratios/rentabilidadactivo";
+import  RotacionActivo from "../components/Ratios/rotacionactivos";
 export const AppRouter = () => {
   return (
     <Routes>
@@ -61,6 +65,46 @@ export const AppRouter = () => {
         element={
           <ProtectedRoute>
             <RotacInv />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path="/ratio/razoncorriente"
+        element={
+          <ProtectedRoute>
+            <RazonCorr />
+          </ProtectedRoute>
+        }
+        />
+         <Route
+        path="/ratio/capitalnetooperativo"
+        element={
+          <ProtectedRoute>
+            <CapitalNOperat />
+          </ProtectedRoute>
+        }
+        />
+           <Route
+        path="/ratio/margenutilidadoperativa"
+        element={
+          <ProtectedRoute>
+            <MargenUtilidadOp />
+          </ProtectedRoute>
+        }
+        />
+         <Route
+        path="/ratio/rentabilidadactivo"
+        element={
+          <ProtectedRoute>
+            <RentabilidadActivo />
+          </ProtectedRoute>
+        }
+        />
+         <Route
+        path="/ratio/rotacionactivos"
+        element={
+          <ProtectedRoute>
+            <RotacionActivo />
           </ProtectedRoute>
         }
         />
