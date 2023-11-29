@@ -10,7 +10,7 @@ export const RegisterPage = () => {
 
   const { signup } = useAuth();
   const navigate = useNavigate();
-  const [setError] = useState();
+  const [error,setError] = useState();
 
   const handleChanges = ({target:{name,value}}) => {
     setUser({...user, [name]: value})
@@ -21,7 +21,7 @@ export const RegisterPage = () => {
     setError('');
     try {
       await signup(user.email, user.password); // signup es una función que viene del context
-      navigate("/ratios");
+      navigate("/");
     }
     catch(error) {
      setError(error.message)
@@ -54,7 +54,7 @@ export const RegisterPage = () => {
                 onChange={handleChanges}
               />
             </div>
-
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             <div className="mt-8 flex flex-col gap-y-4">
               <button type="submit"  className="active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all py-3 rounded-xl bg-purple-700 text-white text-lg font-bold">
                 Register

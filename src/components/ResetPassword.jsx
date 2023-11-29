@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ResetPassword = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
 
   const { resetPassword } = useAuth();
-  const [setError] = useState();
+  const [error, setError] = useState();
 
   const handleChanges = ({ target: { name, value } }) => {
     setUser({ ...user, [name]: value });
@@ -24,6 +25,7 @@ export const ResetPassword = () => {
     }
     try {
       await resetPassword(user.email);
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
@@ -61,6 +63,11 @@ export const ResetPassword = () => {
               </button>
             </Link>
           </div>
+          {error && (
+            <div className="mt-5">
+              <p className="text-red-800 text-lg font-semibold">{error}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

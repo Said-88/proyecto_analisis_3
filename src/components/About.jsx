@@ -11,19 +11,19 @@ export const About = () => {
           alt=""
         />
 
-        <h2 className="text-center font-bold text-2xl mb-4">Nuestra Misión</h2>
+        <h2 className="text-center font-bold text-3xl mb-4">Nuestra Misión</h2>
         <p className="text-justify">
           En Finanzas PYMES, nos dedicamos a ofrecer servicios contables especializados que trascienden las cifras. Nuestra misión es ser tu socio estratégico en el ámbito financiero, proporcionándote balances generales, estados financieros y análisis de razones contables precisos y comprensibles. Nos esforzamos por ser más que un proveedor de servicios; buscamos ser tu aliado confiable, guiándote a través de la complejidad financiera para que puedas tomar decisiones informadas y alcanzar tus objetivos empresariales con confianza y claridad. En Finanzas PYMES, creemos que el éxito financiero de tu empresa es nuestra misión compartida.
         </p>
 
 
-        <h2 className="text-center font-bold text-2xl mb-4">
+        <h2 className="text-center font-bold text-3xl mb-4">
           Nuestra Visión
         </h2>
         <p className="text-justify">
           En Finanzas PYMES, nos visualizamos como líderes en la transformación
           financiera para las pequeñas y medianas empresas. Nuestra visión se
-          enfoca en:Inspirar Confianza y Crecimiento: Queremos ser reconocidos
+          enfoca en: <br/> Inspirar Confianza y Crecimiento: Queremos ser reconocidos
           como el socio de confianza que impulsa el crecimiento sostenible de
           nuestros clientes a través de soluciones financieras innovadoras y
           servicios contables excepcionales. Nuestra visión es ser
@@ -34,7 +34,7 @@ export const About = () => {
         </p>
 
         <div className="text-center font-serif my-4">
-          <span className="font-bold text-2xl block my-4">
+          <span className="font-bold text-4xl block my-4">
             Nuestro Equipo
           </span>
         </div>

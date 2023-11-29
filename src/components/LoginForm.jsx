@@ -10,6 +10,7 @@ export const LoginForm = () => {
 
   const { login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const handleChanges = ({target:{name,value}}) => {
     setUser({...user, [name]: value})
@@ -18,12 +19,13 @@ export const LoginForm = () => {
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
+    setError('');
     try {
       await login(user.email, user.password); // login es una función que viene del context
       navigate("/ratio");
     }
     catch(error) {
-      error.message;
+      setError(error.message);
     }
   }
 
@@ -33,7 +35,7 @@ export const LoginForm = () => {
      navigate("/ratio");
    }
     catch(error) {
-      error.message;
+      setError(error.message);
     }
   }
 
@@ -112,7 +114,9 @@ export const LoginForm = () => {
             </button>
             </Link>
           </div>
+         
         </div>
+        {error && <p className="text-red-500 text-center text-sm mt-2">{error}</p>}
       </div>
     </>
   );
