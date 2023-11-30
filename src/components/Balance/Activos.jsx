@@ -90,8 +90,9 @@ export function Activos() {
 
     return (
         <>
-            <div className="p-4 flex items-center justify-center h-full">
-                <table className="min-w-max table-auto text-left w-full rounded-lg shadow-md">
+ <div className="p-4 flex flex-col items-center justify-center">
+            <div className="overflow-x-auto w-full">
+                <table className="min-w-full table-auto text-left rounded-lg shadow-md">
                     <tbody>
                         {activos.map((activo) => (
                             <tr key={activo.ID} className="even:bg-blue-gray-50/50">
@@ -114,22 +115,13 @@ export function Activos() {
                                         ${activo.monto}
                                     </Typography>
                                 </td>
-                                <td className="p-4">
-                                    <Typography variant="small" color="blue-gray" className="font-normal">
-                                        
-                                    </Typography>
-                                </td>
-                                <td className="p-4">
-                                    <Typography as="a" href="#" variant="small" color="blue-gray" className="font-medium">
-                                        
-                                    </Typography>
-                                </td>
+                                {/* Otros campos de tu tabla */}
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            <div className="flex justify-center items-center">
+            <div className="mt-4">
                 <button
                     type="submit"
                     className="bg-teal-900 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition-colors"
@@ -141,12 +133,13 @@ export function Activos() {
                     type="text"
                     id="name"
                     name="name"
-                    className="border border-gray-300 rounded p-2 m-9"
+                    className="border border-gray-300 rounded p-2 w-full sm:w-auto mt-2"
                     placeholder="Total Activos Corrientes"
                     disabled={true}
                     value={`$ ${inputValue}`}
                 />
             </div>
+        </div>
         </>
     );
 }

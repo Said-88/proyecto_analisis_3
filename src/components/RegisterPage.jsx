@@ -32,7 +32,7 @@ export const RegisterPage = () => {
       <form onSubmit={handleSubmit}>
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-11/12 max-w-[600px] bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
-          <h1 className="text-5xl font-semibold mt-4 text-center">Register Usap</h1>
+          <h1 className="text-5xl font-semibold mt-4 text-center">Register PYMES</h1>
           <div className="mt-8">
             <div className="flex flex-col">
               <label className="text-lg font-medium">Email</label>
